@@ -29,3 +29,16 @@ pub fn get_player_sign() -> PlayerSign {
   
   return player_sign 
 } 
+
+
+
+pub fn get_board() -> String{
+
+  return String::from("###########
+          #X###X###X#
+          ###########
+          #X###X###X#
+          ###########
+          #X###X###X#
+          ###########")
+}
