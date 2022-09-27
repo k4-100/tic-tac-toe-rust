@@ -31,7 +31,7 @@ pub fn get_player_sign() -> PlayerSign {
 } 
 
 
-pub fn perform_round( board: [&str; 9], player_sign: PlayerSign   ){
+pub fn perform_round( board: &mut [&str; 9], player_sign: &mut PlayerSign   ){
 
 }
 
