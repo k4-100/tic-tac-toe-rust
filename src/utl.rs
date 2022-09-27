@@ -30,7 +30,10 @@ pub fn get_player_sign() -> PlayerSign {
   return player_sign 
 } 
 
-// pub fn change_player
+
+pub fn perform_round( board: [&str; 9], player_sign: PlayerSign   ){
+
+}
 
 
 pub fn get_board(board: [&str; 9] ) -> String{
