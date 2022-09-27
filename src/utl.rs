@@ -34,7 +34,8 @@ pub fn get_player_sign() -> PlayerSign {
 
 pub fn get_board() -> String{
 
-  return String::from("###########
+  return String::from("
+          ###########
           #X###X###X#
           ###########
           #X###X###X#

@@ -7,8 +7,6 @@ fn main() {
   println!("{:?}", player_sign);
   let current_player: utl::PlayerSign = player_sign;
   while true{
-    
-    
 
     // "render"
     println!("{}", utl::get_board() );
