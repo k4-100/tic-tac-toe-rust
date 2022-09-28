@@ -13,7 +13,7 @@ fn main() {
     "*", "*", "*",
   ];
 
-  while true{
+  loop {
 
     utl::perform_round(&mut board, &mut current_player);
 

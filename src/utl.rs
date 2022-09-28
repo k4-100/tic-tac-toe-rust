@@ -32,7 +32,24 @@ pub fn get_player_sign() -> PlayerSign {
 
 
 pub fn perform_round( board: &mut [&str; 9], player_sign: &mut PlayerSign   ){
+  let mut buf: String = String::new();
 
+  print!("pick a spot: ");
+  io::stdout().flush().expect("failed to flush");
+  io::stdin().read_line(&mut buf).expect("failed to readline");
+
+  let buf_num: usize = buf.trim().parse().expect("failed to convert type");
+
+  match buf_num{
+    1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 => {
+      if board[buf_num] == "*"{
+        board[buf_num] = "X";
+      }else{
+        println!("wrong index");
+      }
+    }
+    _ => println!("not an index")
+  }
 }
 
 
