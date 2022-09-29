@@ -14,14 +14,16 @@ fn main() {
   ];
   let mut rounds: u8 = board.len() as u8;
   
-  // println!("{}",rand::thread_rng(). gen_range(1..9));
 
-  loop {
+  while rounds > 0 {
     // input from player/computer
     utl::perform_round(&mut board, &human_player, &mut current_player, &mut rounds );
 
     // "render"
     println!("{}", utl::get_board(board) );
+    if rounds == 0{
+      println!("draw");
+    }
   }
   
 }

@@ -35,6 +35,20 @@ pub fn get_player_sign() -> PlayerSign {
 
 
 pub fn perform_round( board: &mut [&str; 9], human_player: &PlayerSign, current_player:  &mut PlayerSign, rounds: &mut u8 ){
+  let answers: [ [usize;3]; 8 ] = [ 
+    // horizontal
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    // vertical
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    // cross
+    [0,4,8],
+    [2,4,6],
+  ];
+
   let mut passed: bool = false;
   let mut buf_num: usize;
   
@@ -80,6 +94,29 @@ pub fn perform_round( board: &mut [&str; 9], human_player: &PlayerSign, current_
       _ => println!("not an index")
     }
   }
+
+  let current_sign: &str =  if matches!(current_player,PlayerSign::X) { "X" } else {"O"} ;
+  // check for winning condition
+  for x in 0..answers.len(){
+    for y in 0..3 as usize{
+      let index = answers[x][y];
+      let board_sign = board[index];
+      if board_sign == current_sign{}
+      else {
+        break;
+      }
+      // if board_sign != current_sign || board_sign != "*" {
+      //   break;
+      // }
+
+      if y == 2 {
+        println!("{} WON!", current_sign);
+        *rounds = 0;
+        return;
+      }
+    }
+  }
+
 }
 
 
