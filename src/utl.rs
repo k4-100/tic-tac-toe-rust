@@ -36,10 +36,10 @@ pub fn get_player_sign() -> PlayerSign {
 
 pub fn perform_round( board: &mut [&str; 9], human_player: &PlayerSign, current_player:  &mut PlayerSign, rounds: &mut u8 ){
   let mut passed: bool = false;
-  let mut buf: String = String::new();
   let mut buf_num: usize;
   
   while !passed {
+    let mut buf: String = String::new();
     if human_player == current_player{
       print!("pick a spot: ");
       io::stdout().flush().expect("failed to flush");
@@ -48,13 +48,13 @@ pub fn perform_round( board: &mut [&str; 9], human_player: &PlayerSign, current_
       buf_num = match buf_num_result {
         Ok(v) => v,
         Err(_)=> {
-          println!("Failed to parse to usize");
+          println!("Failed to parse to usize{buf}");
           0
         }
       };
     }
     else {
-      // println!("AI TIME");
+      println!("AI TIME");
       buf_num = rand::thread_rng().gen_range(1..9);
     }
     
