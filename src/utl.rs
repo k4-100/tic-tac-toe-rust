@@ -1,4 +1,5 @@
 use std::io::{self, Write};
+use::std::num::{ParseIntError};
 
 #[derive(Debug)]
 pub enum PlayerSign {
@@ -38,14 +39,22 @@ pub fn perform_round( board: &mut [&str; 9], player_sign: &mut PlayerSign   ){
   io::stdout().flush().expect("failed to flush");
   io::stdin().read_line(&mut buf).expect("failed to readline");
 
-  let buf_num: usize = buf.trim().parse().expect("failed to convert type");
-
+  let buf_num_res: Result<usize, ParseIntError> = buf.trim().parse::<usize>();
+  let mut buf_num: usize = match buf_num_res {
+    Ok(v) => v,
+    Err(_)=> {
+      println!("Failed to parse to usize");
+      0
+    }
+  };
+  
   match buf_num{
     1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 => {
-      if board[buf_num] == "*"{
-        board[buf_num] = "X";
-      }else{
-        println!("wrong index");
+      if board[buf_num-1] == "*"{
+        board[buf_num-1] = "X";
+      }
+      else{
+        println!("index already in issue");
       }
     }
     _ => println!("not an index")
