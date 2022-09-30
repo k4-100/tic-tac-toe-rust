@@ -97,17 +97,16 @@ pub fn perform_round( board: &mut [&str; 9], human_player: &PlayerSign, current_
 
   let current_sign: &str =  if matches!(current_player,PlayerSign::X) { "X" } else {"O"} ;
   // check for winning condition
+
   for x in 0..answers.len(){
     for y in 0..3 as usize{
       let index = answers[x][y];
       let board_sign = board[index];
+      
       if board_sign == current_sign{}
       else {
         break;
       }
-      // if board_sign != current_sign || board_sign != "*" {
-      //   break;
-      // }
 
       if y == 2 {
         println!("{} WON!", current_sign);
